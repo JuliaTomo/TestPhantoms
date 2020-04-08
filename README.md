@@ -18,3 +18,8 @@ Please see codes in test folder.
 ## References
 
 [1] Deans, S.R., 1983. The Radon transform and some of its applications. Courier Corporation.
+
+## Todo
+
+- Generic mesh -> sinograms
+- Ellipses with efficient ray casting
