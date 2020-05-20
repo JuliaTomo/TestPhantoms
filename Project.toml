@@ -1,4 +1,4 @@
-name = "TestPRojections"
+name = "TestProjections"
 uuid = "0ac59fbb-6e32-428a-8f17-902287c381e2"
 repo = "https://github.com/JuliaTomo/TestProjections.jl"
 version = "0.1.0"
