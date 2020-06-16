@@ -30,9 +30,9 @@ function save_spheres(ddata="../data/sphere/", save_ani=false)
     fproj = "$ddata/sinogram.npy"
     NPZ.npzwrite(fproj, p)
 
-    proj_geom = Dict(:type=>"parallel3d",:ProjectionAngles=>angles,
-                    :DetectorRowCount=>height, :DetectorColCount=>width,
-                    :DetectorSpacingX=>2/height, :DetectorSpacingY=>2/width)
+    proj_geom = Dict("type"=>"parallel3d","ProjectionAngles"=>angles,
+                    "DetectorRowCount"=>height, "DetectorColCount"=>width,
+                    "DetectorSpacingX"=>2/height, "DetectorSpacingY"=>2/width)
 
     @save "$ddata/proj_geom.bson" proj_geom
     # @save "$ddata/proj_geom.bson" proj_geom
