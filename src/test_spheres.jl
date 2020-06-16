@@ -1,5 +1,8 @@
 include("../src/analytic/spheres.jl")
-
+using Plots
+using NPZ, BSON
+using BSON: @save
+    
 function save_spheres(ddata="../data/sphere/")
     
     nangles = 30
@@ -12,8 +15,8 @@ function save_spheres(ddata="../data/sphere/")
     radii = [10.0]
     p = gen_spheres(centers, radii, angles, height, width)
 
-    using Plots
-    ani = @animate for ang=1:length(angles)
+    #ani = @animate 
+    for ang=1:length(angles)
         plot(Gray.(p[ang,:,:] ./ maximum(p[ang,:,:])), title="ang: $(angles[ang])")
     end
 
@@ -22,8 +25,6 @@ function save_spheres(ddata="../data/sphere/")
     # gif(ani, "~/Desktop/test_spheres.gif", fps=4)
 
     # save result
-    using NPZ, BSON
-    using BSON: @save
     ddata = "../data/sphere/"
     mkpath(ddata)
     fproj = "$ddata/sinogram.npy"
