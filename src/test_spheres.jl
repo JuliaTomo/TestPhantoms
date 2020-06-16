@@ -18,7 +18,7 @@ function save_spheres(ddata="../data/sphere/", save_ani=false)
 
     if save_ani
         using Plots
-        ani = @animate for ang=1:length(angles)
+        ani = Plots.@animate for ang=1:length(angles)
             plot(Gray.(p[ang,:,:] ./ maximum(p[ang,:,:])), title="ang: $(angles[ang])")
         end
         gif(ani, "~/Desktop/test_spheres.gif", fps=4)
