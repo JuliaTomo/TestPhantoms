@@ -1,9 +1,8 @@
 include("../src/analytic/spheres.jl")
-# using Plots
 using NPZ, BSON
 using BSON: @save
     
-function save_spheres(ddata="../data/sphere/")
+function save_spheres(ddata="../data/sphere/", save_ani=false)
     
     nangles = 30
     angles = 0:pi/nangles:pi
@@ -15,14 +14,15 @@ function save_spheres(ddata="../data/sphere/")
     radii = [10.0]
     p = gen_spheres(centers, radii, angles, height, width)
 
-    #ani = @animate 
-    for ang=1:length(angles)
-        plot(Gray.(p[ang,:,:] ./ maximum(p[ang,:,:])), title="ang: $(angles[ang])")
-    end
-
     p ./= height
 
-    # gif(ani, "~/Desktop/test_spheres.gif", fps=4)
+    if save_ani
+        using Plots
+        ani = @animate for ang=1:length(angles)
+            plot(Gray.(p[ang,:,:] ./ maximum(p[ang,:,:])), title="ang: $(angles[ang])")
+        end
+        gif(ani, "~/Desktop/test_spheres.gif", fps=4)
+    end
 
     # save result
     ddata = "../data/sphere/"
